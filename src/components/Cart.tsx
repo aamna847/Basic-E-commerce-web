@@ -20,10 +20,11 @@ const Cart = () => {
     }
   };
 
+
   const checkout = async () => {
-    await fetch("http://localhost:3000/api/checkout", {
-      method: "POST",
-      headers: {
+    await fetch('/api/checkout', { 
+          method: "POST",
+      headers: { 
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ products: cart }),
@@ -32,14 +33,14 @@ const Cart = () => {
         return response.json();
       })
       .then((response) => {
-        console.log(response);
+        console.log(response,"response");
         if (response.url) {
           window.location.href = response.url;
           // console.log(response.url);
         }
       });
   };
-
+ 
   return (
     <div className="border rounded-lg p-4 shadow-md">
       <h2 className="text-lg font-semibold mb-4 text-center">Your Cart</h2>
